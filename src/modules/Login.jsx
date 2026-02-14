@@ -53,7 +53,7 @@ const Login = () => {
         }}
       >
         <CardContent>
-          <Typography variant="h4">Login</Typography>
+          <Typography variant="h4">Login Page</Typography>
           <Button onClick={toggleTheme} variant="contained" color="primary">
             theme: {theme === "light" ? "dark" : "light"}
           </Button>
