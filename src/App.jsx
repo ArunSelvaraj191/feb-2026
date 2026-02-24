@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./component/Navbar";
 import Login from "./modules/Login";
@@ -12,11 +12,14 @@ import Users from "./modules/Users";
 function App() {
   const [count, setCount] = useState(0);
 
-  console.log("count =>", count);
+  const location = useLocation();
+  // Hide Navbar on Login and Register screens
+  const hideNavbar =
+    location.pathname === "/" || location.pathname === "/register";
 
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -25,7 +28,7 @@ function App() {
         <Route path="/skills" element={<Skills />} />
         <Route path="/users" element={<Users />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
